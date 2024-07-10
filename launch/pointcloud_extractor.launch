@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="pointcloud_extractor_ros" type="pointcloud_extractor_node" name="pointcloud_extractor" output="screen"/>
+
+    <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(env HOME)/pcd/~.pcd">
+        <param name="frame_id" value="map"/>
+        <param name="latch" value="true"/>
+    </node>
+    <node pkg="rviz" type="rviz" name="" args="-d $(find pointcloud_extractor_ros)/launch/rviz.rviz"/>
+</launch>
